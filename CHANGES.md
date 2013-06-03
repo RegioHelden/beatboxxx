@@ -5,8 +5,10 @@ Changelog
 -----------------
 
 * Fix AttributeError: BeatBoxXmlGenerator instance has no attribute '_out'
+  [lociii]
 
 * Fix typo for childRelationships within describeSObjects method
+  [lociii]
 
 20.0 (2010-11-30)
 -----------------

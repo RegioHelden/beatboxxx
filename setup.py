@@ -17,10 +17,10 @@ setup(
         "Development Status :: 5 - Production/Stable"
     ],
     include_package_data=True,
-    long_description=(
-        open('README.txt').read() +
+    long_description=str(
+        open('README.md').read() +
         "\n" +
-        open('CHANGES.txt').read(),
+        open('CHANGES.md').read(),
     ),
     zip_safe=False,
 )
