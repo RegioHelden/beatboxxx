@@ -18,9 +18,9 @@ setup(
     ],
     include_package_data=True,
     long_description=str(
-        open('README.md').read() +
+        open('README.rst').read() +
         "\n" +
-        open('CHANGES.md').read(),
+        open('CHANGES.rst').read(),
     ),
     zip_safe=False,
 )

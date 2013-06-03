@@ -1,20 +1,18 @@
 Introduction
 ============
 
-This is a distutils-packaged and updated version of the `beatbox module`_
+This is a distutils-packaged and updated version of the beatbox module
 by Simon Fell, which is a Python implementation of a client for the
 Salesforce.com Partner Web Services API.
 
-.. _`beatbox module`: http://www.pocketsoap.com/beatbox/
+`beatbox module <http://www.pocketsoap.com/beatbox>`_
 
 This module contains 2 versions of the Salesforce.com client:
 
- XMLClient
-   The original beatbox version of the client which returns xmltramp objects.
- PythonClient
-   Marshalls the returned objects into proper Python data types. e.g. integer
-   fields return integers.
-
+* XMLClient
+ * The original beatbox version of the client which returns xmltramp objects.
+* PythonClient
+ * Marshalls the returned objects into proper Python data types. e.g. integer fields return integers.
 
 Compatibility
 =============
@@ -23,46 +21,53 @@ Beatbox supports versions 16.0 through 20.0 of the Salesforce Partner Web
 Services API. However, the following API calls have not been implemented at
 this time:
 
- * convertLead
- * emptyRecycleBin
- * invalidateSessions
- * logout
- * merge
- * process
- * queryAll
- * undelete
- * describeSObject
- * sendEmail
- * describeDataCategoryGroups
- * describeDataCategoryGroupStructures
+* convertLead
+* emptyRecycleBin
+* invalidateSessions
+* logout
+* merge
+* process
+* queryAll
+* undelete
+* describeSObject
+* sendEmail
+* describeDataCategoryGroups
+* describeDataCategoryGroupStructures
 
 Beatbox has been tested with Python 2.4 and Python 2.6.
-
 
 Basic Usage Examples
 ====================
 
 Instantiate a Python Salesforce.com client:
-  >>> svc = beatbox.PythonClient()
-  >>> svc.login('username', 'passwordTOKEN')
-  
+```python
+svc = beatbox.PythonClient()
+svc.login('username', 'passwordTOKEN')
+```
+
 (Note that interacting with Salesforce.com via the API requires the use of a
 'security token' which must be appended to the password.)
 
 Query for contacts with last name 'Doe':
-  >>> res = svc.query("SELECT Id, FirstName, LastName FROM Contact WHERE LastName='Doe'")
-  >>> res[0]
-  {'LastName': 'Doe', 'type': 'Contact', 'Id': '0037000000eRf6vAAC', 'FirstName': 'John'}
-  >>> res[0].Id
-  '0037000000eRf6vAAC'
+```python
+res = svc.query("SELECT Id, FirstName, LastName FROM Contact WHERE LastName='Doe'")
+res[0]
+# {'LastName': 'Doe', 'type': 'Contact', 'Id': '0037000000eRf6vAAC', 'FirstName': 'John'}
+
+res[0].Id
+# '0037000000eRf6vAAC'
+```
 
 Add a new Lead:
-  >>> contact = {'type': 'Lead', 'LastName': 'Glick', 'FirstName': 'David', 'Company': 'Individual'}
-  >>> res = svc.create(contact)
+```python
+contact = {'type': 'Lead', 'LastName': 'Glick', 'FirstName': 'David', 'Company': 'Individual'}
+res = svc.create(contact)
+```
 Get the ID of the newly created Lead:
-  >>> res[0]['id']
-  '00Q7000000RVyiHEAT'
-
+```python
+res[0]['id']
+# '00Q7000000RVyiHEAT'
+```
 
 More Examples
 =============
@@ -73,32 +78,23 @@ src/beatbox/tests/test_pythonClient.py.
 
 Some of these other products that have been built on top of beatbox can also
 provide example of use:
-  
-  * `Salesforce Base Connector`_
-  * `Salesforce PFG Adapter`_
-  * `Salesforce Auth Plugin`_
-  * `RSVP for Salesforce`_
 
-.. _`Salesforce Base Connector`: http://plone.org/products/salesforcebaseconnector
-.. _`Salesforce PFG Adapter`: http://plone.org/products/salesforcepfgadapter
-.. _`Salesforce Auth Plugin`: http://plone.org/products/salesforceauthplugin
-.. _`RSVP for Salesforce`: http://plone.org/products/collective.salesforce.rsvp
-
+* `Salesforce Base Connector <http://plone.org/products/salesforcebaseconnector>`_
+* `Salesforce PFG Adapter <http://plone.org/products/salesforcepfgadapter>`_
+* `Salesforce Auth Plugin <http://plone.org/products/salesforceauthplugin>`_
+* `RSVP for Salesforce <http://plone.org/products/collective.salesforce.rsvp>`_
 
 Alternatives
 ============
 
-David Lanstein has created a `Python Salesforce Toolkit`_ that is based on the
-`suds`_ SOAP library.  Based on limited tests it appears to be somewhat slower
+David Lanstein has created a `Python Salesforce Toolkit <http://code.google.com/p/salesforce-python-toolkit/>`_ that is based on the
+`suds <https://fedorahosted.org/suds/>`_ SOAP library.  Based on limited tests it appears to be somewhat slower
 than beatbox for operations that return a lot of data; however, it may be a
 better option if you want to be able to automatically generate a service proxy
 for a new WSDL (such as for the Enterprise web services API).
 
-.. _`Python Salesforce Toolkit`: http://code.google.com/p/salesforce-python-toolkit/
-.. _`suds`: https://fedorahosted.org/suds/
-
 Ron Hess from Salesforce.com has adapted beatbox for use with Google App
-Engine.  See http://code.google.com/p/force-app-engine/
+Engine.  See `<http://code.google.com/p/force-app-engine/>`
 
 
 Running Tests
@@ -129,4 +125,3 @@ Run the tests::
 
     python src/beatbox/tests/test_beatbox.py
     python src/beatbox/tests/test_pythonClient.py
-
