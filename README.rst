@@ -10,9 +10,9 @@ Salesforce.com Partner Web Services API.
 This module contains 2 versions of the Salesforce.com client:
 
 * XMLClient
- * The original beatbox version of the client which returns xmltramp objects.
+   The original beatbox version of the client which returns xmltramp objects.
 * PythonClient
- * Marshalls the returned objects into proper Python data types. e.g. integer fields return integers.
+   Marshalls the returned objects into proper Python data types. e.g. integer fields return integers.
 
 Compatibility
 =============
@@ -40,34 +40,34 @@ Basic Usage Examples
 ====================
 
 Instantiate a Python Salesforce.com client:
-```python
-svc = beatbox.PythonClient()
-svc.login('username', 'passwordTOKEN')
-```
+
+::
+
+   svc = beatbox.PythonClient()
+   svc.login('username', 'passwordTOKEN')
+
 
 (Note that interacting with Salesforce.com via the API requires the use of a
 'security token' which must be appended to the password.)
 
 Query for contacts with last name 'Doe':
-```python
-res = svc.query("SELECT Id, FirstName, LastName FROM Contact WHERE LastName='Doe'")
-res[0]
-# {'LastName': 'Doe', 'type': 'Contact', 'Id': '0037000000eRf6vAAC', 'FirstName': 'John'}
 
-res[0].Id
-# '0037000000eRf6vAAC'
-```
+::
 
-Add a new Lead:
-```python
-contact = {'type': 'Lead', 'LastName': 'Glick', 'FirstName': 'David', 'Company': 'Individual'}
-res = svc.create(contact)
-```
-Get the ID of the newly created Lead:
-```python
-res[0]['id']
-# '00Q7000000RVyiHEAT'
-```
+   res = svc.query("SELECT Id, FirstName, LastName FROM Contact WHERE LastName='Doe'")
+   res[0]
+   # {'LastName': 'Doe', 'type': 'Contact', 'Id': '0037000000eRf6vAAC', 'FirstName': 'John'}
+   res[0].Id
+   # '0037000000eRf6vAAC'
+
+Add a new Lead and get the ID of the newly created Lead:
+
+::
+
+   contact = {'type': 'Lead', 'LastName': 'Glick', 'FirstName': 'David', 'Company': 'Individual'}
+   res = svc.create(contact)
+   res[0]['id']
+   # '00Q7000000RVyiHEAT'
 
 More Examples
 =============
@@ -102,26 +102,25 @@ Running Tests
 
 First, we need to add some custom fields to the Contacts object in your Salesforce instance:
 
- * Login to your Salesforce.com instance
- * Browse to Setup --> Customize --> Contacts --> Fields --> "New" button
- * Add a Picklist (multi-select) labeled "Favorite Fruit", then add
-    * Apple
-    * Orange
-    * Pear
- * Leave default of 3 lines and field name should default to "Favorite_Fruit"
- * Add a Number labeled "Favorite Integer", with 18 places, 0 decimal places
- * Add a Number labeled "Favorite Float", with 13 places, 5 decimal places
+* Login to your Salesforce.com instance
+* Browse to Setup --> Customize --> Contacts --> Fields --> "New" button
+* Add a Picklist (multi-select) labeled "Favorite Fruit", then add: Apple, Orange, Pear
+* Leave default of 3 lines and field name should default to "Favorite_Fruit"
+* Add a Number labeled "Favorite Integer", with 18 places, 0 decimal places
+* Add a Number labeled "Favorite Float", with 13 places, 5 decimal places
 
-Create a sfconfig file in your python path with the following format::
+Create a sfconfig file in your python path with the following format:
 
-    USERNAME='your salesforce username'
-    PASSWORD='your salesforce passwordTOKEN'
+::
+
+   USERNAME='your salesforce username'
+   PASSWORD='your salesforce passwordTOKEN'
 
 where TOKEN is your Salesforce API login token.
-
 Add './src' to your PYTHONPATH
+Run the tests:
 
-Run the tests::
+::
 
     python src/beatbox/tests/test_beatbox.py
     python src/beatbox/tests/test_pythonClient.py
