@@ -9,7 +9,7 @@ setup(
     description="A Python client for the Saleforce.com SOAP API",
     author="RegioHelden GmbH, Simon Fell et al",
     author_email='opensource@regiohelden.de',
-    url="https://github.com/RegioHelden/beatbox",
+    url="https://github.com/RegioHelden/beatboxxx",
     keywords="python salesforce salesforce.com",
     license="GNU GENERAL PUBLIC LICENSE Version 2",
     classifiers=[
