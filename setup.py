@@ -5,7 +5,7 @@ setup(
     name='beatboxxx',
     packages=['beatbox'],
     package_dir={'': 'src'},
-    version='21.1',  # be sure to update the version in _beatbox.py too
+    version='21.2',  # be sure to update the version in _beatbox.py too
     description="A Python client for the Saleforce.com SOAP API",
     author="RegioHelden GmbH, Simon Fell et al",
     author_email='opensource@regiohelden.de',
